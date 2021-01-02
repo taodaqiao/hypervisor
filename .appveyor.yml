@@ -22,7 +22,7 @@
 #
 # Setup
 #
-os: Visual Studio 2017
+os: Visual Studio 2019
 platform: x64
 
 environment:
@@ -50,8 +50,8 @@ for:
   build_script:
     - mkdir build_msbuild
     - cd build_msbuild
-    - cmake -G "Visual Studio 15 2017 Win64" -DENABLE_BUILD_VMM=OFF -DENABLE_BUILD_TEST=ON ..
-    - msbuild /m:3 hypervisor.sln
+    - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=OFF -DENABLE_BUILD_TEST=ON ..
+    - msbuild /m:32 hypervisor.sln
     - cmake --build . --target unittest
 
   test: off
@@ -80,6 +80,7 @@ for:
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; unzip cmake-3.13.4-win64-x64.zip"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; mkdir build_cygwin"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER/build_cygwin; ../cmake-3.13.4-win64-x64/bin/cmake .. -G \"Unix Makefiles\" -DENABLE_BUILD_VMM=OFF -DENABLE_BUILD_TEST=ON -DCMAKE_C_COMPILER_WORKS=ON'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER/build_cygwin; make -j3"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER/build_cygwin; make -j32"'
 
   test: off
+  
