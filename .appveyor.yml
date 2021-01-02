@@ -26,6 +26,10 @@ os: Visual Studio 2019
 platform: x64
 
 environment:
+  my_variable:
+    secure: ms0FBTiEiq0at8Oq3g7vsIFkSnDErCWRqLC8EY67kfPFdf9Z78fAsOQNPUGKchNi
+    
+environment:
   matrix:
     - type: native
     - type: cygwin
