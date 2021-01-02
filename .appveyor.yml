@@ -36,7 +36,6 @@ environment:
 #
 # Visual Studio (Native)
 #
--
   matrix:
     only:
       - type: native
