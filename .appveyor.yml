@@ -36,9 +36,6 @@ environment:
 #
 # Visual Studio (Native)
 #
-  matrix:
-    only:
-      - type: native
 
   environment:
     PATH: '%PATH%;C:\Program Files\NASM'
