@@ -1,6 +1,6 @@
 
  
-s: Visual Studio 2019
+os: Visual Studio 2019
 platform: x64
 
 for:
