@@ -52,7 +52,7 @@ for:
     - cd build_msbuild
     - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=NO -DENABLE_BUILD_TEST=OFF ..
     - msbuild /m:3 hypervisor.sln
-    - cmake --build . --target unittest
+  #  - cmake --build . --target unittest
 
   test: off
 
