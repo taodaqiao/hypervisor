@@ -1,16 +1,17 @@
 
-os: Visual Studio 2019
+ 
+s: Visual Studio 2019
 platform: x64
 
-environment:
-  my_variable:
-    secure: ms0FBTiEiq0at8Oq3g7vsIFkSnDErCWRqLC8EY67kfPFdf9Z78fAsOQNPUGKchNi
-  matrix:
-    - type: nativ 
+for:
 
 #
 # Visual Studio (Native)
 #
+-
+  matrix:
+    only:
+      - type: native
 
   environment:
     PATH: '%PATH%;C:\Program Files\NASM'
@@ -23,9 +24,7 @@ environment:
     - mkdir build_msbuild
     - cd build_msbuild
     - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=NO -DENABLE_BUILD_TEST=OFF ..
-    - msbuild /m:32 hypervisor.sln
-#    - cmake --build . --target unittest
- 
+    - msbuild /m:3 hypervisor.sln
 
 
 
