@@ -1,36 +1,4 @@
-Skip to content
-Search or jump to…
 
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@taodaqiao 
-Bareflank
-/
-hypervisor
-64
-891149
-Code
-Issues
-5
-Pull requests
-2
-Actions
-Security
-Insights
-hypervisor/.appveyor.yml
-@connojd
-connojd Windows and Cygwin CI fixes
-…
-Latest commit b5edee1 on 10 Mar 2019
- History
- 3 contributors
-@rianquinn@connojd@JaredWright
-85 lines (72 sloc) 2.96 KB 
-  
-#
 # Copyright (C) 2019 Assured Information Security, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -115,17 +83,3 @@ for:
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER/build_cygwin; make -j3"'
 
   test: off
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
- Octotree
- Login with GitHub
