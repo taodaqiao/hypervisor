@@ -23,7 +23,7 @@ for:
   build_script:
     - mkdir build_msbuild
     - cd build_msbuild
-    - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=NO -DENABLE_BUILD_TEST=OFF ..
+    - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=OFF -DENABLE_BUILD_TEST=NO ..
     - msbuild /m:3 hypervisor.sln
 
 
