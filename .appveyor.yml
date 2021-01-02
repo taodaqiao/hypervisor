@@ -33,8 +33,6 @@ environment:
   matrix:
     - type: nativ
 
-for:
-
 #
 # Visual Studio (Native)
 #
@@ -57,7 +55,7 @@ for:
     - msbuild /m:32 hypervisor.sln
 #    - cmake --build . --target unittest
  
-  test: off
+
 
 
    
