@@ -13,17 +13,10 @@ environment:
 install:
   - git submodule update --init --recursive
   
-deploy:
-  # Deploy to GitHub Releases
-  - provider: GitHub
-    auth_token:
-      secure: nDgJHMm6peHy3bjXVeYFqGVc4kYB3HN9y/VgOoD+wBNT1tAc/FJ5HJ3x8linYIP8
-    tag: $(appveyor_build_version)
-    release: 自动发布 v$(appveyor_build_version)
-    prerelease: true
-    on:
-      branch: master
-      
+artifacts:
+    - path: public
+
+
 for:
 
 #
@@ -47,6 +40,22 @@ for:
     - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=NO -DENABLE_BUILD_TEST=OFF ..
     - msbuild /m:3 hypervisor.sln
   #  - cmake --build . --target unittest
+
+on_success:
+    - git config --global credential.helper store
+    - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+    - git config --global user.email "%GIT_USER_EMAIL%"
+    - git config --global user.name "%GIT_USER_NAME%"
+    - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site
+    - cd %TEMP%\static-site
+    - del * /f /q
+    - for /d %%p IN (*) do rmdir "%%p" /s /q
+    - SETLOCAL EnableDelayedExpansion & robocopy "%APPVEYOR_BUILD_FOLDER%\public" "%TEMP%\static-site" /e & IF !ERRORLEVEL! EQU 1 (exit 0) ELSE (IF !ERRORLEVEL! EQU 3 (exit 0) ELSE (exit 1))
+    - git add -A
+    - git commit -m "Update Static Site"
+    - git push origin %TARGET_BRANCH%
+- appveyor AddMessage "Static Site Updated"
+
 
   test: off
 
