@@ -19,7 +19,7 @@ on_success:
     - git config --global user.email "%GIT_USER_EMAIL%"
     - git config --global user.name "%GIT_USER_NAME%"
 
-    - cd /d C:\projects\build_msbuild
+    - cd /d C:/projects/hypervisor/build_msbuild
     - git add -A
     - git commit -m "Update Static Site"
     - git push origin
@@ -45,7 +45,7 @@ for:
   build_script:
     - mkdir build_msbuild
     - cd build_msbuild
-    - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=NO -DENABLE_BUILD_TEST=OFF ..
+    - cmake -G "Visual Studio 16 2019" -DENABLE_BUILD_VMM=OFF -DENABLE_BUILD_TEST=NO ..
     - msbuild /m:3 hypervisor.sln
   #  - cmake --build . --target unittest
   
